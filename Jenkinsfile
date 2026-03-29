@@ -16,10 +16,10 @@ pipeline {
         sh 'mvn clean package'
       }
     }
-    stage('Building docker image'){
+    stage('Build & Push docker image'){
       steps{
-        sh 
-        '''docker build -t tirupati .
+        sh '''
+        docker build -t tirupati .
         docker tag tirupati tirupatipallu/java1:29.03
         docker push tirupatipallu/java1:29.03
         '''
