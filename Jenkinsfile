@@ -19,7 +19,7 @@ pipeline {
     stage('Build & Push docker image'){
       steps{
         script{
-          withDockerRegistry(credentialsId: 'docker', url: 'https://hub.docker.com') {
+          withDockerRegistry(credentialsId: 'docker') {
             sh '''
         docker build -t tirupati .
         docker tag tirupati tirupatipallu/java1:29.03
