@@ -8,7 +8,7 @@ pipeline {
       steps{
         git branch: 'main',url: 'https://github.com/Tirupatitata123/maven-app.git'
 
-        echo 'CHeckout successfully'
+        echo 'CHeckout successfully...'
       }
     }
   }
