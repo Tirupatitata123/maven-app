@@ -28,6 +28,25 @@ pipeline {
         }
         }
       }
-    } 
+    }
+    stage('Check Port') {
+            steps {
+                script {
+                    def portStatus = sh(script: 'netstat -tuln | grep ":9000"', returnStatus: true)
+                    if (portStatus == 0) {
+                        echo "Port 9000 is in use, stopping and removing the existing container"
+                        sh 'docker stop aseem_container'
+                        sh 'docker rm aseem_container'
+                    } else {
+                        echo "Port 9000 is available"
+                    }
+                }
+            }
+        }
+    stage('Deploy Container'){
+      steps{
+        sh 'docker run -d -p 9000:8080 --name Tirupati_app tirupatipallu/java1:29.03'
+      }
+    }
   }
 }
