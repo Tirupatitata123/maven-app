@@ -11,5 +11,10 @@ pipeline {
         echo 'CHeckout successfully...'
       }
     }
+    stage('Build stage'){
+      steps{
+        sh 'mnv clean package'
+      }
+    }
   }
 }
